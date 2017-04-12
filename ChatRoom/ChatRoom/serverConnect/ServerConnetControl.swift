@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ServerConnetControl.swift
 //  ChatRoom
 //
 //  Created by mx_in on 2017/4/12.
@@ -8,22 +8,29 @@
 
 import UIKit
 
-class ChatClientViewController: UIViewController, StreamDelegate {
-
+class ServerConnetControl: NSObject, StreamDelegate{
+    
+    class var sharedInstance: ServerConnetControl {
+        struct Static {
+            static let instance: ServerConnetControl = ServerConnetControl()
+        }
+        return Static.instance
+    }
+    
     let host: CFString = "localhost" as CFString
     let port: UInt32 = 80
-    
-    @IBOutlet weak var nameTextField: UITextField!
     
     var inputStream: InputStream!
     var outputStream: OutputStream!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.initNetworkCommunication()
+    var message = Array<String>()
+    
+    override init() {
+        super.init()
+        initNetworkCommunication()
     }
     
-    func initNetworkCommunication() {
+    fileprivate func initNetworkCommunication() {
         var readStream: Unmanaged<CFReadStream>?
         var writeStream: Unmanaged<CFWriteStream>?
         CFStreamCreatePairWithSocketToHost(nil, self.host, self.port, &readStream, &writeStream)
@@ -38,13 +45,21 @@ class ChatClientViewController: UIViewController, StreamDelegate {
         self.inputStream.open()
         self.outputStream.open()
     }
-
-    @IBAction func joinChat(_ sender: UIButton) {
-        
-    }
     
+    //MARK: StreamDelegate
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         
     }
+
 }
 
+extension ServerConnetControl {
+    public func joinChat(name: String) {
+        let response = "iam:\(name)"
+        var data = response.data(using: String.Encoding.ascii)!
+        
+        data.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<UInt8>) -> Void in
+            self.outputStream.write(bytes, maxLength: data.count)
+        }
+    }
+}
