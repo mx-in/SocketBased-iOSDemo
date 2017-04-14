@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatClientViewController: UIViewController, StreamDelegate {
+class JoinChatViewController: UIViewController, StreamDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -28,7 +28,7 @@ class ChatClientViewController: UIViewController, StreamDelegate {
             return
         }
         
-        ServerConnetControl.sharedInstance.joinChat(name: name)
+        ServerConectController.sharedInstance.joinChat(name: name)
         
     }
     

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ServerConnetControl: NSObject, StreamDelegate{
+ class ServerConectControl: NSObject, StreamDelegate{
     
-    class var sharedInstance: ServerConnetControl {
+    class var sharedInstance: ServerConectControl {
         struct Static {
-            static let instance: ServerConnetControl = ServerConnetControl()
+            static let instance: ServerConectControl = ServerConectControl()
         }
         return Static.instance
     }
@@ -53,7 +53,7 @@ class ServerConnetControl: NSObject, StreamDelegate{
 
 }
 
-extension ServerConnetControl {
+extension ServerConectControl {
     public func joinChat(name: String) {
         let response = "iam:\(name)"
         var data = response.data(using: String.Encoding.ascii)!
