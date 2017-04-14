@@ -8,11 +8,11 @@
 
 import UIKit
 
- class ServerConectControl: NSObject, StreamDelegate{
+ class ServerConectController: NSObject, StreamDelegate{
     
-    class var sharedInstance: ServerConectControl {
+    class var sharedInstance: ServerConectController {
         struct Static {
-            static let instance: ServerConectControl = ServerConectControl()
+            static let instance: ServerConectController = ServerConectController()
         }
         return Static.instance
     }
@@ -46,20 +46,40 @@ import UIKit
         self.outputStream.open()
     }
     
-    //MARK: StreamDelegate
+    func joinChat(name: String) {
+        let responseStr = "iam:\(name)"
+        responseStr.withBytes(stringBytes: {(stringBytes: (UnsafeMutablePointer <UInt8>), dataCount: Int) -> Void in
+            self.outputStream.write(stringBytes, maxLength: dataCount)
+        })
+        
+    }
+    
+    func sendMessage(_ message: String) {
+        let responseStr = "msg:\(message)"
+        responseStr.withBytes { bytes, length in self.outputStream.write(bytes, maxLength: length) }
+    }
+    
+    //MARK: StreamDelegatstringBytes: (UnsafeMutablePointer <UInt8>), dataCount: integer-> Voide
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         
     }
 
 }
 
-extension ServerConectControl {
-    public func joinChat(name: String) {
-        let response = "iam:\(name)"
-        var data = response.data(using: String.Encoding.ascii)!
-        
-        data.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<UInt8>) -> Void in
-            self.outputStream.write(bytes, maxLength: data.count)
+extension String {
+    func withBytes(stringBytes: (UnsafeMutablePointer <UInt8>,  Int)-> Void) {
+        var stringData = self.data(using: String.Encoding.ascii)!
+        stringData.withUnsafeMutableBytes { (bytes: UnsafeMutablePointer<UInt8>) -> Void in
+            stringBytes(bytes, stringData.count)
         }
     }
 }
+
+
+
+
+
+
+
+
+
