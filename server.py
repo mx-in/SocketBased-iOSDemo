@@ -19,7 +19,7 @@ class IphoneChat(Protocol):
         msg = ""
         if commond == "iam":
             self.name = content
-            msg = self.name + "has joined" 
+            msg = self.name + " has joined" 
 
         elif commond == "msg":
             msg = self.name + ": "  + content
