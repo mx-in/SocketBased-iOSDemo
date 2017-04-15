@@ -14,7 +14,6 @@
 		469BB94B1E9E1C4E0001C200 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469BB9491E9E1C4E0001C200 /* Main.storyboard */; };
 		469BB94D1E9E1C4E0001C200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 469BB94C1E9E1C4E0001C200 /* Assets.xcassets */; };
 		469BB9501E9E1C4E0001C200 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469BB94E1E9E1C4E0001C200 /* LaunchScreen.storyboard */; };
-		469BB9581E9E1CC90001C200 /* ChatClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BB9571E9E1CC90001C200 /* ChatClientDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		469BB94C1E9E1C4E0001C200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		469BB94F1E9E1C4E0001C200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		469BB9511E9E1C4E0001C200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		469BB9571E9E1CC90001C200 /* ChatClientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatClientDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 				469BB9451E9E1C4E0001C200 /* AppDelegate.swift */,
 				46645A021E9E6FDD00158148 /* JoinChatViewController.swift */,
 				46645A101E9FC40B00158148 /* ChatViewController.swift */,
-				469BB9571E9E1CC90001C200 /* ChatClientDelegate.swift */,
 				469BB9491E9E1C4E0001C200 /* Main.storyboard */,
 				469BB94C1E9E1C4E0001C200 /* Assets.xcassets */,
 				469BB94E1E9E1C4E0001C200 /* LaunchScreen.storyboard */,
@@ -155,7 +152,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46645A031E9E6FDD00158148 /* JoinChatViewController.swift in Sources */,
-				469BB9581E9E1CC90001C200 /* ChatClientDelegate.swift in Sources */,
 				469BB9461E9E1C4E0001C200 /* AppDelegate.swift in Sources */,
 				46645A111E9FC40B00158148 /* ChatViewController.swift in Sources */,
 				46645A081E9E70CA00158148 /* ServerConectController.swift in Sources */,
